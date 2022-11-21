@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text ,Image, PermissionsAndroid} from 'react-native';
+import {View, StyleSheet, Text ,Image, PermissionsAndroid,TouchableHighlight,TouchableOpacity} from 'react-native';
 import wordmark from '../assets/Instagram-Wordmark-Black-Logo.wine.svg'
 
 const Header = () => {
@@ -8,7 +8,7 @@ const Header = () => {
             
             <View style={styles.logo}><Image style={styles.iglogo} source={require('../assets/Instagram-Wordmark-Logo.wine.png')}></Image></View>
             <View style={styles.cam}><Image style={styles.camLogo} source={require('../assets/igLogoIcon.wine.png')}></Image></View>
-            <View style={styles.dms}><Image style={styles.dmsLogo} source={require('../assets/dms.png')}></Image></View>
+            <View style={styles.dms}><View style={styles.notiBadgeContainer}><Text style={styles.notiBadge}>7</Text></View><Image style={styles.dmsLogo} source={require('../assets/dms.png')}></Image></View>
         </View>
     );
 }
@@ -16,8 +16,8 @@ const Header = () => {
 const styles = StyleSheet.create({
     headerContainer:{
         height:50,
-        position:"relative",
-        marginTop:"6.5%",
+        width:"100%",
+        position:"absolute",
         display:"flex",
         shadowColor: 'grey', 
         
@@ -62,6 +62,24 @@ const styles = StyleSheet.create({
         
         resizeMode:"contain"
        
+    },
+
+    notiBadgeContainer:{
+        backgroundColor:'red',
+        position:'absolute',
+        zIndex:1,
+        left:15,
+        top:-2,
+        paddingHorizontal:5,
+        borderRadius:12
+        
+        
+    },
+    notiBadge:{
+        
+        fontSize:10,
+        color:"white",
+        
     }
    
 
