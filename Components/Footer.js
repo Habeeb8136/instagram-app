@@ -18,9 +18,11 @@ footerContainer:{
     
     flexDirection:"row",
     justifyContent:"space-evenly",
-    top:"153%",
-    backgroundColor:"rgb(240,240,240)",
-    bottom:"0%",
+    top:"156%",
+     
+        backgroundColor:"rgb(255,255,255)",
+        elevation: -20,
+    
 },
 home:{
     
