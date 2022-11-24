@@ -15,13 +15,15 @@ const Footer = () => {
 
 const styles = StyleSheet.create({
 footerContainer:{
-    
+    zIndex:3,
+    width:"100%",
+    backgroundColor:'white',
     flexDirection:"row",
     justifyContent:"space-evenly",
-    top:"156%",
-     
-        backgroundColor:"rgb(255,255,255)",
-        elevation: -20,
+    bottom:0, 
+    
+    position:'absolute'
+    
     
 },
 home:{

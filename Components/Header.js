@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, StyleSheet, Text ,Image, PermissionsAndroid,TouchableHighlight,TouchableOpacity} from 'react-native';
-import wordmark from '../assets/Instagram-Wordmark-Black-Logo.wine.svg'
+import {View, StyleSheet, Text ,Image, PermissionsAndroid,TouchableHighlight,TouchableOpacity, SafeAreaView ,StatusBar} from 'react-native';
+
 
 const Header = () => {
     return (
@@ -15,71 +15,70 @@ const Header = () => {
 
 const styles = StyleSheet.create({
     headerContainer:{
-        height:50,
-        width:"100%",
-        position:"absolute",
-        display:"flex",
-        shadowColor: 'grey', 
-        
+        zIndex:3,
+        height:50, 
         backgroundColor:"rgb(255,255,255)",
-        elevation: 8,  
+        position:'relative',
+        
+        flexDirection:"row",
+        
+        shadowColor: 'grey', 
+        elevation: 10,  
         
     },
     logo:{
-        top:7,
-        left:15,
-        height:"70%",
+        marginLeft:10,
+        
+        justifyContent:'center',
+        alignItems:'center'
         
     },
     iglogo:{
-        height:'100%',
         width:120,
-        
-        
-        
+        height:40,
+        top:3,
+        left:1
     },
     cam:{
-        width:"10%",
-        
-        marginTop:"2%", 
-        height:"70%",
-        bottom:26,
-        left:275
+        left:140,
+        paddingHorizontal:10,
+        justifyContent:'center',
+        alignItems:'center'
     },
     
     camLogo:{
-        height:20,
+        
         width:20,  
+        resizeMode:"contain"
     },
     
     dms:{
-       left:320,
-       bottom:67
+       
+       justifyContent:'center',
+       paddingHorizontal:10,
+       left:140
+       
     },
     dmsLogo:{
-        height:30,
         width:30,
-        
         resizeMode:"contain"
-       
     },
 
     notiBadgeContainer:{
         backgroundColor:'red',
         position:'absolute',
-        zIndex:1,
-        left:15,
-        top:-2,
+        zIndex:2,
+        left:26,
+        top:8,
         paddingHorizontal:5,
         borderRadius:12
         
         
     },
     notiBadge:{
-        
         fontSize:10,
         color:"white",
-        
+        fontWeight:"800"
     }
    
 
