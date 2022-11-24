@@ -12,7 +12,7 @@ const StoriesAndFeeds = () => {
         .then(data=>{
             setFeeds(data)
         })
-    }, []);
+    },[]);
 
     
 
@@ -40,9 +40,9 @@ const StoriesAndFeeds = () => {
             
         </ScrollView>
 
-        <ScrollView style={styles.container}>
-                {feeds.map((feeds,index)=>(
-                    <PostCard feeds={feeds} users={Users}/>
+        <ScrollView style={styles.feedsContainer}>
+                {feeds.map((feeds)=>(
+                    <PostCard feeds={feeds} users={Users} key={feeds.id}/>
                 ))}
                     
                 
@@ -106,6 +106,9 @@ const styles = StyleSheet.create({
         width:70,
         height:20,
         marginVertical:5,
+    },
+    feedsContainer:{
+        marginBottom:50
     }
     
 })
