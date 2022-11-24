@@ -4,7 +4,8 @@ import {View, StyleSheet, Text,SafeAreaView, ScrollView, StatusBar,Pressable, Im
 const currectDate=new Date().getDate();
 
 const PostCard = ({users,feeds}) => {
-    const dateUploaded=feeds.updated_at
+    const dateUploaded=feeds.updated_at;
+    
 
     return (
       
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
   justifyContent:'space-between',
   alignItems:"center",
   padding:12,
-  marginTop:10,
+  
  },
  headerProfilePic:{
         

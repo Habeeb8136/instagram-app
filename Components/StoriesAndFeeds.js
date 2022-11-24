@@ -1,23 +1,34 @@
 import React, { useState ,useEffect } from 'react';
-import {View, StyleSheet, ScrollView,Text,Image} from 'react-native';
+import {View, StyleSheet, ScrollView,Text,Image, Button} from 'react-native';
 import { Users } from '../Data/Users';
+import { Feeds } from '../Data/Feeds';
 import PostCard from './PostCard';
+import Header from './Header';
+import Footer from './Footer';
+import { Modal } from 'react-native';
 
 
-const StoriesAndFeeds = () => {
-    const[feeds,setFeeds]=useState();
-    useEffect(() => {
-        fetch("https://api.unsplash.com/photos/?client_id=3tmr3kZNIf-Bd5tUpt0S3H_wGwaBL2N3S-fJPGvpXRM")
-        .then(res=>res.json())
-        .then(data=>{
-            setFeeds(data)
-        })
-    },[]);
+const StoriesAndFeeds = ({navigation}) => {
+
+    const [storyViewed,setStoryViewed]=useState(false);
+   
+
+    // const[feeds,setFeeds]=useState();
+    // useEffect(() => {
+    //     fetch("https://api.unsplash.com/photos/?client_id=3tmr3kZNIf-Bd5tUpt0S3H_wGwaBL2N3S-fJPGvpXRM")
+    //     .then(res=>res.json())
+    //     .then(data=>{
+    //         setFeeds(data)
+    //     })
+    // },[]);
 
     
 
     return (
+        <View>
+        <Header navigation={navigation} />
         <ScrollView>
+        
         <ScrollView style={styles.storyContainer} horizontal showsHorizontalScrollIndicator={false}>
 
             <View style={styles.stories} >
@@ -27,37 +38,43 @@ const StoriesAndFeeds = () => {
 
             {Users.map((users,index) => (
                 
-                <View style={styles.stories} key={users.id}>
-                    <View style={styles.imageContainer}><Image style={styles.profilepicImage} source={{uri:users.profilepic}} ></Image></View>
+                <View style={styles.stories} key={users.id} onTouchEnd={()=>setStoryViewed(true)} >
+                    <View style={!storyViewed&&styles.imageContainer}><Image style={styles.profilepicImage} source={{uri:users.profilepic}} ></Image></View>
                     <View style={styles.usernameDiv}><Text numberOfLines={1} style={styles.yourStory}>{users.userId}</Text></View>
                 </View>
             
             ))}
             
-
+            <Modal visible={storyViewed}>
+                <View style={styles.backButton} onTouchEnd={()=>setStoryViewed(false)}><Text>back</Text></View>
+                <Image style={{height:'100%',justifyContent:"center"}} source={{uri:'https://picsum.photos/200/300'}}></Image>
+                
+            </Modal>    
 
           
             
         </ScrollView>
 
         <ScrollView style={styles.feedsContainer}>
-                {feeds.map((feeds)=>(
+        
+                {Feeds.map((feeds)=>(
                     <PostCard feeds={feeds} users={Users} key={feeds.id}/>
                 ))}
                     
                 
         </ScrollView>
-
-        </ScrollView>
-
         
+        </ScrollView>
+                    <Footer navigation={navigation}/>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     storyContainer:{
-        
-        paddingHorizontal:8,
+        backgroundColor:'white',
+        paddingTop:60,
+        paddingHorizontal:4,
         paddingVertical:14
     },
     stories:{
@@ -108,7 +125,16 @@ const styles = StyleSheet.create({
         marginVertical:5,
     },
     feedsContainer:{
-        marginBottom:50
+        marginBottom:50,
+        backgroundColor:'white',
+    },
+    backButton:{
+        color:'black',
+        width:50,
+        bottom:-6,
+        padding:5
+        
+        
     }
     
 })

@@ -2,13 +2,18 @@ import React from 'react';
 import {View, StyleSheet, Text ,Image, PermissionsAndroid,TouchableHighlight,TouchableOpacity, SafeAreaView ,StatusBar} from 'react-native';
 
 
-const Header = () => {
+const Header = ({navigation}) => {
+
+    function Gotodms(){
+        navigation.navigate('Dms')
+    }
+
     return (
         <View style={styles.headerContainer}>
             
             <View style={styles.logo}><Image style={styles.iglogo} source={require('../assets/Instagram-Wordmark-Logo.wine.png')}></Image></View>
             <View style={styles.cam}><Image style={styles.camLogo} source={require('../assets/igLogoIcon.wine.png')}></Image></View>
-            <View style={styles.dms}><View style={styles.notiBadgeContainer}><Text style={styles.notiBadge}>7</Text></View><Image style={styles.dmsLogo} source={require('../assets/dms.png')}></Image></View>
+            <View style={styles.dms} onTouchEnd={Gotodms} ><View style={styles.notiBadgeContainer}><Text style={styles.notiBadge}>7</Text></View><Image style={styles.dmsLogo} source={require('../assets/dms.png')}></Image></View>
         </View>
     );
 }
@@ -18,12 +23,13 @@ const styles = StyleSheet.create({
         zIndex:3,
         height:50, 
         backgroundColor:"rgb(255,255,255)",
-        position:'relative',
-        
+        position:'absolute',
+        width:'100%',
         flexDirection:"row",
         
-        shadowColor: 'grey', 
-        elevation: 10,  
+        shadowColor:'rgb(110,110,110)',
+        elevation: 5,
+          
         
     },
     logo:{
