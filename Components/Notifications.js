@@ -4,11 +4,13 @@ import {View, StyleSheet,Text} from 'react-native';
 const Notifications = () => {
     return (
         <View>
-            <Text>No notifications</Text>
+            <Text style={{textAlign:'center',marginTop:30}}>No notifications</Text>  
         </View>
     );
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+   
+})
 
 export default Notifications;
