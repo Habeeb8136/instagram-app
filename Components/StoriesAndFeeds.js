@@ -6,7 +6,7 @@ import PostCard from './PostCard';
 import Header from './Header';
 import Footer from './Footer';
 import { Modal } from 'react-native';
-
+import { LinearGradient } from 'expo-linear-gradient'
 
 const StoriesAndFeeds = ({navigation}) => {
 
@@ -32,14 +32,20 @@ const StoriesAndFeeds = ({navigation}) => {
         <ScrollView style={styles.storyContainer} horizontal showsHorizontalScrollIndicator={false}>
 
             <View style={styles.stories} >
-                <View style={styles.imageContainer}><Image style={styles.profilepicImage} source={{uri:'https://scontent.cdninstagram.com/v/t51.2885-19/308673453_1320344602070529_7677327710423934081_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent.cdninstagram.com&_nc_cat=109&_nc_ohc=tsyOn_eYfSgAX_fx8oY&edm=APs17CUBAAAA&ccb=7-5&oh=00_AfAvcMB-0CyxsQtsRSj60-KQSrQfei_r9x0NaT-wSwFUeg&oe=6383779E&_nc_sid=978cb9'}} ></Image><Text style={styles.addStory}>+</Text></View>
-                <View style={styles.usernameDiv}><Text style={styles.yourStory}>my story</Text></View>
+                <LinearGradient colors={['violet','red','orange']} end={{ x: 0.1,y: 0.6}} style={styles.imageContainer}>
+                    <Image style={styles.profilepicImage} source={{uri:'https://scontent.cdninstagram.com/v/t51.2885-19/308673453_1320344602070529_7677327710423934081_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent.cdninstagram.com&_nc_cat=109&_nc_ohc=tsyOn_eYfSgAX_fx8oY&edm=APs17CUBAAAA&ccb=7-5&oh=00_AfAvcMB-0CyxsQtsRSj60-KQSrQfei_r9x0NaT-wSwFUeg&oe=6383779E&_nc_sid=978cb9'}} ></Image>
+                    <Text style={styles.addStory}>+</Text>
+                </LinearGradient>
+
+                <View style={styles.usernameDiv}>
+                    <Text style={styles.yourStory}>my story</Text>
+                </View>
             </View>
 
             {Users.map((users,index) => (
                 
                 <View style={styles.stories} key={users.id} onTouchEnd={()=>setStoryViewed(true)} >
-                    <View style={!storyViewed&&styles.imageContainer}><Image style={styles.profilepicImage} source={{uri:users.profilepic}} ></Image></View>
+                    <LinearGradient colors={['violet','red','orange']} end={{ x: 0.1,y: 0.6}} style={!storyViewed&&styles.imageContainer}><Image style={styles.profilepicImage} source={{uri:users.profilepic}} ></Image></LinearGradient>
                     <View style={styles.usernameDiv}><Text numberOfLines={1} style={styles.yourStory}>{users.userId}</Text></View>
                 </View>
             
@@ -96,7 +102,7 @@ const styles = StyleSheet.create({
         
     },
     imageContainer:{
-        backgroundColor:'  rgb(255, 85, 85)',
+        
         height:70,
         width:70,
         borderRadius:50,
